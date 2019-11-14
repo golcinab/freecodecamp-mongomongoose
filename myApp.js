@@ -40,12 +40,15 @@ mongoose.connect(process.env.MONGO_URI);
 
 // <Your code here >
 const Schema = mongoose.Schema;
-const Person = new Schema({
-  name: String,
-  age: Number,
+
+const personSchema = new Schema({
+  name: {type: String, required: true},
+  age:  {type: Number},
   favoriteFoods: [String]
 });
-  /* = <Your Model> */
+
+const Person = mongoose.model('Person', personSchema)
+/* = <Your Model> */
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
